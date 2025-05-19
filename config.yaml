@@ -1,0 +1,33 @@
+name: Fully On Prem
+version: 0.0.1
+schema: v1
+models:
+  - name: Bedrock
+    provider: bedrock
+    model: us.anthropic.claude-3-5-sonnet-20241022-v2:0
+    env:
+      region: us-east-1
+      profile: nate
+    roles:
+      - chat
+
+  - name: GPT-4o Azure
+    model: azure-openai-deployment
+    provider: azure
+    apiBase: https://continue-azure-openai-instance.openai.azure.com
+    apiKey: ${{ secrets.AZURE_GPT_API_KEY }}
+
+  - name: GPT-4.1 Nano Azure
+    model: gpt-4.1-nano
+    provider: azure
+    apiBase: https://sesti-mad3pr8b-eastus2.cognitiveservices.azure.com
+    apiKey: ${{ secrets.AZURE_NANO_API_KEY }}
+
+context:
+  - provider: currentFile
+  - provider: docs
+  - provider: diff
+  - provider: file
+  - provider: open
+  - provider: problems
+  - provider: url
