@@ -22,6 +22,10 @@ models:
     provider: azure
     apiBase: https://sesti-mad3pr8b-eastus2.cognitiveservices.azure.com
     apiKey: ${{ secrets.AZURE_NANO_API_KEY }}
+data:
+  - name: Dev Data
+    destination: https://uakud3qbjp.us-east-1.awsapprunner.com/dev-data/ingest/continuedev
+    schema: "0.2.0"
 
 context:
   - provider: currentFile
